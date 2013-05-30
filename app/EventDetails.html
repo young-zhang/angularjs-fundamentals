@@ -60,13 +60,13 @@
                 <li ng-repeat="session in event.sessions | filter:query | orderBy:sortorder" class="span11">
                     <div class="row session">
                         <div class="span0 well votingWidget">
-                            <div class="votingButton" ng-click="upVoteSession(session)">
+                            <div class="votingButton" ng-click="upVoteSession(session, event)">
                                 <i class="icon-chevron-up icon-white"></i>
                             </div>
                             <div class="badge badge-inverse">
                                 <div>{{session.upVoteCount}}</div>
                             </div>
-                            <div class="votingButton" ng-click="downVoteSession(session)">
+                            <div class="votingButton" ng-click="downVoteSession(session, event)">
                                 <i class="icon-chevron-down"></i>
                             </div>
                         </div>
