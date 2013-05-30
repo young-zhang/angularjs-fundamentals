@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="utf-8">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="/NewEvent.html">Create Event</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div ng-controller="EventController" style="padding-left:20px; padding-right:20px">
+        <div id="me">
+            <img data-ng-src="{{event.imageUrl}}" alt="{{event.name}}"/>
+
+            <div class="row">
+                <div class="span11">
+                    <h2>{{event.name}}
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span3">
+                    <div><strong>Date:</strong> {{event.date}}</div>
+                    <div><strong>Time:</strong> {{event.time}}</div>
+                </div>
+                <div class="span4">
+                    <address>
+                        <strong>Address:</strong><br/>
+                        {{event.location.address}}<br/>
+                        {{event.location.city}}, {{event.location.province}}
+                    </address>
+                </div>
+
+            </div>
+
+            <hr/>
+
+            <h3>Sessions</h3>
+            Order By:
+            <select ng-model="sortorder" class="input-small">
+                <option selected value="name">Name</option>
+                <option value="-upVoteCount">Votes</option>
+            </select>
+            Show:
+            <select ng-model="query" class="input-medium">
+                <option selected value="">All</option>
+                <option value="introductory">Introductory</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+            <ul class="thumbnails">
+                <li ng-repeat="session in event.sessions | filter:query | orderBy:sortorder" class="span11">
+                    <div class="row session">
+                        <div class="span0 well votingWidget">
+                            <div class="votingButton" ng-click="upVoteSession(session)">
+                                <i class="icon-chevron-up icon-white"></i>
+                            </div>
+                            <div class="badge badge-inverse">
+                                <div>{{session.upVoteCount}}</div>
+                            </div>
+                            <div class="votingButton" ng-click="downVoteSession(session)">
+                                <i class="icon-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="well span9" ng-click="navigateToDetails(event)" style=" height:100%; overflow: hidden;">
+                            <h4 class="well-title">{{session.name}} <button type="button" class="btn" ng-show="allowUserToEditSession(session)" ng-click="editSession(session)" style="margin-left:10px;">Edit</button></h4>
+                            <h6 style="margin-top:-10px;">{{session.creatorName}}</h6>
+                            <span>Duration: {{session.duration | durations}}</span><br />
+                            <span>Level: {{session.level}}</span>
+
+                            <p>{{session.abstract}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/underscore-1.4.4.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/EditEventController.js"></script>
+<script src="/js/controllers/EventController.js"></script>
+<script src="/js/filters.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+
+</body>
+</html>
