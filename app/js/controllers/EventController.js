@@ -4,6 +4,10 @@ eventsApp.controller('EventController',
     function EventController($scope, eventData) {
     	$scope.sortorder = 'name';
         $scope.event = eventData.getEvent();
+        $scope.event.then(
+            function(e) {console.log(e);},
+            function(r) {console.log(r);}
+        );
 
         $scope.upVoteSession = function(session, event) {
             console.log('event passed in by EventDetails.html:');
