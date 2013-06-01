@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="utf-8">
+    <title>Compile Sample </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="CompileSampleController" style="padding:20px;">
+
+        <div id="appendHere"></div>
+        <br/>
+        name:<input type="text" ng-model="name"/><br/>
+        markup: <input type="text" ng-model="markup"/><br/>
+        <button class="btn" ng-click="appendDivToElement(markup)">Append</button>
+
+    </div>
+</div>
+
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/angular-resource.js"></script>
+<script src="/lib/angular/angular-cookies.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/CompileSampleController.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+
+</body>
+</html>
