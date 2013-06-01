@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="utf-8">
+    <title>Timeout Sample </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/app.css"/>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="TimeoutSampleController" style="padding:20px;">
+
+        <button class="btn" ng-click="cancel()">Cancel</button>
+        <h3>Name: {{name}}</h3>
+
+        <input type="text" ng-model="foo"/>
+
+
+    </div>
+</div>
+
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/angular-resource.js"></script>
+<script src="/lib/angular/angular-cookies.js"></script>
+<script src="/lib/angular/angular-locale_es.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controllers/TimeoutSampleController.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
+
+</body>
+</html>
